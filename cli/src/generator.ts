@@ -1,11 +1,11 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { 
-  componentTemplate, 
-  typesTemplate, 
-  stylesTemplate, 
-  storiesTemplate, 
-  mockDataTemplate 
+import {
+  componentTemplate,
+  typesTemplate,
+  stylesTemplate,
+  storiesTemplate,
+  mockDataTemplate,
 } from './templates';
 
 export interface GeneratorOptions {
@@ -21,7 +21,11 @@ export class ComponentGenerator {
   constructor(options: GeneratorOptions) {
     this.componentName = options.componentName;
     this.outputPath = options.outputPath;
-    this.componentDir = path.join(this.outputPath, 'components', this.componentName);
+    this.componentDir = path.join(
+      this.outputPath,
+      'components',
+      this.componentName
+    );
   }
 
   private capitalizeFirstLetter(str: string): string {
@@ -34,7 +38,9 @@ export class ComponentGenerator {
     }
 
     if (!/^[A-Za-z][A-Za-z0-9]*$/.test(this.componentName)) {
-      throw new Error('Component name must start with a letter and contain only letters and numbers');
+      throw new Error(
+        'Component name must start with a letter and contain only letters and numbers'
+      );
     }
   }
 
@@ -51,7 +57,9 @@ export class ComponentGenerator {
     if (exists) {
       const files = await fs.readdir(this.componentDir);
       if (files.length > 0) {
-        throw new Error(`Component "${this.componentName}" already exists at ${this.componentDir}`);
+        throw new Error(
+          `Component "${this.componentName}" already exists at ${this.componentDir}`
+        );
       }
     }
   }
@@ -70,10 +78,14 @@ export class ComponentGenerator {
     try {
       // Validate inputs
       this.validateComponentName();
-      
+
       // Capitalize component name for consistency
       this.componentName = this.capitalizeFirstLetter(this.componentName);
-      this.componentDir = path.join(this.outputPath, 'components', this.componentName);
+      this.componentDir = path.join(
+        this.outputPath,
+        'components',
+        this.componentName
+      );
 
       // Check if component already exists
       await this.checkIfComponentExists();
@@ -86,14 +98,31 @@ export class ComponentGenerator {
 
       // Generate all files
       await Promise.all([
-        this.generateFile(`${this.componentName}.tsx`, componentTemplate(this.componentName)),
-        this.generateFile(`${this.componentName}Types.ts`, typesTemplate(this.componentName)),
-        this.generateFile(`${this.componentName}.styles.ts`, stylesTemplate(this.componentName)),
-        this.generateFile(`${this.componentName}.stories.ts`, storiesTemplate(this.componentName)),
-        this.generateFile(`${this.componentName}.mock.data.ts`, mockDataTemplate(this.componentName)),
+        this.generateFile(
+          `${this.componentName}.tsx`,
+          componentTemplate(this.componentName)
+        ),
+        this.generateFile(
+          `${this.componentName}Types.ts`,
+          typesTemplate(this.componentName)
+        ),
+        this.generateFile(
+          `${this.componentName}.styles.ts`,
+          stylesTemplate(this.componentName)
+        ),
+        this.generateFile(
+          `${this.componentName}.stories.ts`,
+          storiesTemplate(this.componentName)
+        ),
+        this.generateFile(
+          `${this.componentName}.mock.data.ts`,
+          mockDataTemplate(this.componentName)
+        ),
       ]);
 
-      console.log(`\n🎉 Successfully generated ${this.componentName} component!`);
+      console.log(
+        `\n🎉 Successfully generated ${this.componentName} component!`
+      );
       console.log(`📂 Location: ${this.componentDir}`);
       console.log(`\nFiles created:`);
       console.log(`  • ${this.componentName}.tsx`);
@@ -101,9 +130,10 @@ export class ComponentGenerator {
       console.log(`  • ${this.componentName}.styles.ts`);
       console.log(`  • ${this.componentName}.stories.ts`);
       console.log(`  • ${this.componentName}.mock.data.ts`);
-
     } catch (error) {
-      console.error(`❌ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error(
+        `❌ Error: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       throw error;
     }
   }

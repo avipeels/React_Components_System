@@ -10,7 +10,13 @@
     "build": "tsc",
     "dev": "ts-node src/index.ts"
   },
-  "keywords": ["react", "component", "generator", "cli", "typescript"],
+  "keywords": [
+    "react",
+    "component",
+    "generator",
+    "cli",
+    "typescript"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {

@@ -9,7 +9,9 @@ const program = new Command();
 
 program
   .name('generate-component')
-  .description('CLI tool to generate React component files with TypeScript, Storybook, and styled-components')
+  .description(
+    'CLI tool to generate React component files with TypeScript, Storybook, and styled-components'
+  )
   .version('1.0.0');
 
 program
@@ -23,20 +25,29 @@ program
 
       const generator = new ComponentGenerator({
         componentName,
-        outputPath: path.resolve(options.output),
+        outputPath: path.join(process.cwd(), 'components'),
       });
 
       await generator.generate();
 
-      console.log(chalk.green('\n✨ Component generation completed successfully!'));
+      console.log(
+        chalk.green('\n✨ Component generation completed successfully!')
+      );
       console.log(chalk.gray('\nNext steps:'));
-      console.log(chalk.gray('1. Import and use your component in your application'));
-      console.log(chalk.gray('2. Run Storybook to see your component in action'));
-      console.log(chalk.gray('3. Customize the component styles and functionality'));
-
+      console.log(
+        chalk.gray('1. Import and use your component in your application')
+      );
+      console.log(
+        chalk.gray('2. Run Storybook to see your component in action')
+      );
+      console.log(
+        chalk.gray('3. Customize the component styles and functionality')
+      );
     } catch (error) {
       console.error(chalk.red('\n❌ Generation failed:'));
-      console.error(chalk.red(error instanceof Error ? error.message : 'Unknown error'));
+      console.error(
+        chalk.red(error instanceof Error ? error.message : 'Unknown error')
+      );
       process.exit(1);
     }
   });
