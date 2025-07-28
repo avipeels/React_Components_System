@@ -21,11 +21,7 @@ export class ComponentGenerator {
   constructor(options: GeneratorOptions) {
     this.componentName = options.componentName;
     this.outputPath = options.outputPath;
-    this.componentDir = path.join(
-      this.outputPath,
-      'components',
-      this.componentName
-    );
+    this.componentDir = path.join(this.outputPath, this.componentName);
   }
 
   private capitalizeFirstLetter(str: string): string {

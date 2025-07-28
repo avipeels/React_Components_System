@@ -25,7 +25,7 @@ program
 
       const generator = new ComponentGenerator({
         componentName,
-        outputPath: path.join(process.cwd(), 'components'),
+        outputPath: path.join(process.cwd()),
       });
 
       await generator.generate();

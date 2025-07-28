@@ -56,7 +56,7 @@ program
         console.log(chalk_1.default.gray('================================\n'));
         const generator = new generator_1.ComponentGenerator({
             componentName,
-            outputPath: path.join(process.cwd(), 'components'),
+            outputPath: path.join(process.cwd()),
         });
         await generator.generate();
         console.log(chalk_1.default.green('\n✨ Component generation completed successfully!'));

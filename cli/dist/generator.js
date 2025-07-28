@@ -41,7 +41,7 @@ class ComponentGenerator {
     constructor(options) {
         this.componentName = options.componentName;
         this.outputPath = options.outputPath;
-        this.componentDir = path.join(this.outputPath, 'components', this.componentName);
+        this.componentDir = path.join(this.outputPath, this.componentName);
     }
     capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
