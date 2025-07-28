@@ -1,0 +1,27 @@
+{
+  "name": "react-component-generator",
+  "version": "1.0.0",
+  "description": "CLI tool to generate React component files with TypeScript, Storybook, and styled-components",
+  "main": "index.js",
+  "bin": {
+    "generate-component": "./bin/generate-component.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": ["react", "component", "generator", "cli", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}

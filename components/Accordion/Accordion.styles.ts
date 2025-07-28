@@ -4,6 +4,7 @@ const AccordionWrapper = styled.div`
   font-family: 'Verdana', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
+  width: 1024px;
 `;
 
 const AccordionItemWrapper = styled.div`
